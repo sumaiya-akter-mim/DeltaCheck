@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Deltacheck — Prevent Hazardous PostgreSQL Migrations</title>
-    <meta name="description" content="Deltacheck analyzes PostgreSQL schema migration files to detect hazardous changes before they reach production.">
+    <title>DeltaCheck — Prevent Hazardous PostgreSQL Migrations</title>
+    <meta name="description" content="DeltaCheck analyzes PostgreSQL schema migration files to detect hazardous changes before they reach production.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -14,18 +14,20 @@
     <header class="site-header">
       <div class="container header-wrap">
         <a href="#" class="brand">
-          <img src="assets/image.png" alt="Deltacheck logo" class="brand-logo">
-          <span class="brand-name">Deltacheck</span>
+          <img src="assets/logo.png" alt="DeltaCheck logo" class="brand-logo">
+          <span class="brand-name"><span class="brand-delta">Delta</span><span class="brand-check">Check</span></span>
         </a>
         <nav class="nav">
           <a href="#product" class="nav-link">Product</a>
-          <a href="#features" class="nav-link">Features</a>
           <a href="#how" class="nav-link">How it works</a>
+          <a href="#features" class="nav-link">Features</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
-        <div class="header-cta">
-          <a href="#get-started" class="btn btn-primary">Get Started</a>
-        </div>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+        </button>
       </div>
     </header>
 
@@ -35,10 +37,10 @@
         <div class="container hero-wrap">
           <div class="hero-content">
             <h1 class="hero-title">Prevent hazardous PostgreSQL migrations</h1>
-            <p class="hero-subtitle">Analyze schema migration files to detect dangerous changes before they reach production.</p>
+            <p class="hero-subtitle">Analyze schema migration files to detect dangerous changes before they reach production</p>
             <div class="hero-actions">
-              <!-- <a href="#get-started" class="btn btn-primary">Get Started</a> -->
-              <a href="https://github.com/sumaiya-akter-mim/migration" class="btn btn-secondary">View on GitHub</a>
+              <a href="#get-started" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Started</a>
+              <a href="https://github.com/sumaiya-akter-mim/migration" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
             <div class="hero-badges">
               <span class="badge">CI-ready</span>
@@ -69,7 +71,7 @@ Exit code: 1</code></pre>
 
       <section id="features" class="features">
         <div class="container">
-          <h2 class="section-title">Why Deltacheck</h2>
+          <h2 class="section-title">Why DeltaCheck</h2>
           <div class="grid">
             <div class="card">
               <div class="card-icon">🛡️</div>
@@ -114,7 +116,7 @@ Exit code: 1</code></pre>
                 <span class="step-index">1</span>
                 <div>
                   <h4 class="step-title">Read migration files</h4>
-                  <p class="step-desc">Point to your migrations directory; Deltacheck parses operations for each step.</p>
+                  <p class="step-desc">Point to your migrations directory; DeltaCheck parses operations for each step.</p>
                 </div>
               </li>
               <li>
@@ -153,24 +155,71 @@ artifacts:
       <section id="get-started" class="cta">
         <div class="container cta-wrap">
           <h2 class="cta-title">Stop unsafe migrations before they ship</h2>
-          <p class="cta-text">Add Deltacheck to your pipeline and protect production data.</p>
-          <a href="#contact" class="btn btn-primary btn-lg">Request access</a>
+          <p class="cta-text">Add DeltaCheck to your pipeline and protect production data.</p>
+          <a href="#contact" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Request access</a>
         </div>
       </section>
     </main>
 
+    <!-- Mobile navigation panel -->
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <div class="mobile-nav-inner">
+        <a href="#product" class="mobile-nav-link">Product</a>
+        <a href="#how" class="mobile-nav-link">How it works</a>
+        <a href="#features" class="mobile-nav-link">Features</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        const toggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        if (!toggle || !mobileNav) return;
+
+        function closeNav() {
+          document.body.classList.remove('mobile-nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          mobileNav.hidden = true;
+        }
+
+        function openNav() {
+          document.body.classList.add('mobile-nav-open');
+          toggle.setAttribute('aria-expanded', 'true');
+          mobileNav.hidden = false;
+        }
+
+        toggle.addEventListener('click', function() {
+          const isOpen = document.body.classList.toggle('mobile-nav-open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+          mobileNav.hidden = !isOpen;
+        });
+
+        mobileNav.addEventListener('click', function(e) {
+          if (e.target && e.target.classList.contains('mobile-nav-link')) {
+            closeNav();
+          }
+        });
+
+        // Auto-close when resizing to desktop
+        const mq = window.matchMedia('(min-width: 860px)');
+        mq.addEventListener('change', function(e) {
+          if (e.matches) closeNav();
+        });
+      })();
+    </script>
     <footer class="site-footer" id="contact">
       <div class="container footer-wrap">
         <div class="footer-brand">
-          <span class="brand-mark">Δ</span>
-          <span class="brand-name">Deltacheck</span>
+          <img src="assets/logo.png" alt="DeltaCheck logo" class="brand-logo">
+          <span class="brand-name"><span class="brand-delta">Delta</span><span class="brand-check">Check</span></span>
         </div>
         <div class="footer-links">
           <a href="#features" class="footer-link">Features</a>
           <a href="#how" class="footer-link">How it works</a>
           <a href="#get-started" class="footer-link">Get started</a>
         </div>
-        <div class="footer-copy">© Deltacheck</div>
+        <div class="footer-copy">© DeltaCheck</div>
       </div>
     </footer>
   </body>
