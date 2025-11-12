@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title>Deltacheck</title>
+  <desc>Stylized delta with check mark in navy, cyan, and green.</desc>
+  <defs>
+    <linearGradient id="g-navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e2a47"/>
+      <stop offset="1" stop-color="#163a5f"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(20,16)">
+    <path d="M108 0l108 188H0L108 0z" fill="url(#g-navy)"/>
+    <path d="M22 178h196" stroke="#25c7e7" stroke-width="6" stroke-linecap="round"/>
+    <path d="M148 64l-32 36-18-18-22 22 40 40 56-64z" fill="#6fd04a"/>
+  </g>
+</svg>

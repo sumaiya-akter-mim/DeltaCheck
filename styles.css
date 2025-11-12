@@ -1,0 +1,117 @@
+:root {
+  --bg: #0b0f16;
+  --fg: #e6edf3;
+  --muted: #9aa7b2;
+  --brand-navy: #0e2a47;
+  --brand-cyan: #25c7e7;
+  --brand-green: #6fd04a;
+  --primary: var(--brand-green);
+  --primary-2: #3cab2f;
+  --card: #101622;
+  --stroke: #1b2230;
+  --success: #22c55e;
+  --warn: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--fg);
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(37,199,231,0.18), transparent),
+              radial-gradient(1200px 600px at 90% 10%, rgba(14,42,71,0.18), transparent),
+              var(--bg);
+}
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(150%) blur(12px);
+  background: rgba(11,15,22,0.6);
+  border-bottom: 1px solid var(--stroke);
+}
+.header-wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); font-weight: 700; letter-spacing: 0.2px; }
+.brand-logo { width: 40px; height: 40px; display: inline-block; }
+@media (min-width: 860px) {
+  .brand-logo { width: 48px; height: 48px; }
+}
+.brand-name { font-size: 18px; }
+
+.nav { display: none; gap: 16px; }
+.nav-link { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav-link:hover { color: var(--fg); }
+
+.header-cta { display: none; }
+
+@media (min-width: 860px) {
+  .nav { display: inline-flex; }
+  .header-cta { display: inline-flex; }
+}
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; border-radius: 12px; border: 1px solid var(--stroke); padding: 10px 16px; font-weight: 600; }
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: white; border-color: transparent; box-shadow: 0 6px 22px rgba(111,208,74,0.25); }
+.btn-secondary { color: var(--fg); background: rgba(16,22,34,0.6); }
+.btn-lg { padding: 14px 22px; font-size: 18px; }
+
+.hero { position: relative; padding: 80px 0; }
+.gradient-bg { position: absolute; inset: 0; pointer-events: none; }
+.hero-wrap { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+
+.hero-title { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 0 0 16px; letter-spacing: -0.02em; }
+.hero-subtitle { font-size: clamp(16px, 2.6vw, 22px); color: var(--muted); margin: 0 0 24px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-badges { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--stroke); color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 14px; }
+
+.hero-card { border: 1px solid var(--stroke); background: linear-gradient(180deg, rgba(16,22,34,0.8), rgba(16,22,34,0.6)); border-radius: 16px; overflow: hidden; }
+.code-head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--stroke); background: rgba(11,15,22,0.6); }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #22c55e; }
+.code-title { color: var(--muted); font-size: 13px; }
+.code { margin: 0; padding: 16px; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; line-height: 1.6; color: #b7c4d3; }
+
+@media (min-width: 980px) {
+  .hero-wrap { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.features { padding: 72px 0; }
+.section-title { font-size: 28px; margin: 0 0 24px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.card { border: 1px solid var(--stroke); background: radial-gradient(600px 300px at 50% 0%, rgba(37,199,231,0.18), transparent), var(--card); border-radius: 16px; padding: 20px; display: grid; gap: 8px; }
+.card-icon { font-size: 24px; }
+.card-title { margin: 0; font-size: 18px; }
+.card-text { margin: 0; color: var(--muted); }
+
+.how { padding: 72px 0; }
+.how-wrap { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+@media (min-width: 980px) { .how-wrap { grid-template-columns: 1.1fr 0.9fr; } }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+.steps li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; border: 1px solid var(--stroke); background: var(--card); border-radius: 14px; padding: 14px; }
+.step-index { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--brand-cyan), var(--brand-green)); color: #fff; font-weight: 700; display: inline-grid; place-items: center; }
+.step-title { margin: 0 0 6px; }
+.step-desc { margin: 0; color: var(--muted); }
+.how-card { border: 1px solid var(--stroke); background: var(--card); border-radius: 16px; overflow: hidden; }
+
+.cta { padding: 80px 0; background: linear-gradient(180deg, rgba(124,124,255,0.12), rgba(124,124,255,0.04)); border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); }
+.cta-wrap { display: grid; place-items: center; text-align: center; gap: 12px; }
+.cta-title { margin: 0; font-size: clamp(24px, 4.2vw, 34px); }
+.cta-text { margin: 0; color: var(--muted); }
+
+.site-footer { padding: 40px 0; }
+.footer-wrap { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: center; }
+@media (min-width: 740px) { .footer-wrap { grid-template-columns: auto 1fr auto; } }
+.footer-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
+.footer-links { display: inline-flex; gap: 16px; }
+.footer-link { color: var(--muted); text-decoration: none; }
+.footer-link:hover { color: var(--fg); }
+.footer-copy { color: var(--muted); justify-self: end; }
+
+.hero-card, .how-card, .card { transition: transform 220ms ease, box-shadow 220ms ease; }
+.hero-card:hover, .how-card:hover, .card:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 12px 36px rgba(0,0,0,0.35); }
